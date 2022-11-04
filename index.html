@@ -1,447 +1,556 @@
-
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    
 
-    <meta charset="utf-8">
+<meta charset="utf-8">
 
-    
-<title>Как правильно оформить баг-репорт</title>
-<meta name="title" content="Как правильно оформить баг-репорт">
-<meta name="description" content="Хороший баг-репорт позволяет: понять, в чем проблема, и какова ее важность.">
-<meta name="keywords" content="">
-<link rel="canonical" href="https://testit.software/blog/post/kak-pravilno-oformit-bag-report">
-<meta name="robots" content="index, follow">
 
+   <title>Как правильно оформить баг-репорт</title>
+   <meta name="title" content="Как правильно оформить баг-репорт">
+   <meta name="description" content="Хороший баг-репорт позволяет: понять, в чем проблема, и какова ее важность.">
+   <meta name="keywords" content="">
+   <link rel="canonical" href="https://testit.software/blog/post/kak-pravilno-oformit-bag-report">
+   <meta name="robots" content="index, follow">
 
 
 
-    <meta property="og:title" content="Как правильно оформить баг-репорт">
-    <meta property="og:description" content="Хороший баг-репорт позволяет: понять, в чем проблема, и какова ее важность.">
-    <meta property="og:site_name" content="">
-    <meta property="og:url" content="https://testit.software/blog/post/kak-pravilno-oformit-bag-report">
 
-    
-            <meta property="og:image" content="https://testit.software/storage/app/media/Articles%20IMG/-%D1%86%D0%B8%D0%BA%D0%BB-%D0%B1%D0%B0%D0%B3%D0%B0.jpg">
-        <meta property="og:image:width" content="1391">
-        <meta property="og:image:height" content="718">
-    
-    
-    <meta name="twitter:description" content="Хороший баг-репорт позволяет: понять, в чем проблема, и какова ее важность.">
-    <meta name="twitter:title" content="Как правильно оформить баг-репорт">
-    <meta name="twitter:image" content="https://testit.software/storage/app/media/Articles%20IMG/-%D1%86%D0%B8%D0%BA%D0%BB-%D0%B1%D0%B0%D0%B3%D0%B0.jpg">
+   <meta property="og:title" content="Как правильно оформить баг-репорт">
+   <meta property="og:description"
+      content="Хороший баг-репорт позволяет: понять, в чем проблема, и какова ее важность.">
+   <meta property="og:site_name" content="">
+   <meta property="og:url" content="https://testit.software/blog/post/kak-pravilno-oformit-bag-report">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="OctoberCMS">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&amp;display=swap" rel="stylesheet">
 
-    <!-- Дополнительные иконки для десктопных браузеров -->
-    <link type="image/png" sizes="16x16" rel="icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/favicon-16x16.png">
-    <link type="image/png" sizes="32x32" rel="icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/favicon-32x32.png">
-    <link type="image/png" sizes="96x96" rel="icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/favicon-96x96.png">
-    <link type="image/png" sizes="120x120" rel="icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/favicon-120x120.png">
+   <meta property="og:image"
+      content="https://testit.software/storage/app/media/Articles%20IMG/-%D1%86%D0%B8%D0%BA%D0%BB-%D0%B1%D0%B0%D0%B3%D0%B0.jpg">
+   <meta property="og:image:width" content="1391">
+   <meta property="og:image:height" content="718">
 
-    <!-- Иконки для Android -->
-    <link type="image/png" sizes="72x72" rel="icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-72x72.png">
-    <link type="image/png" sizes="96x96" rel="icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-96x96.png">
-    <link type="image/png" sizes="144x144" rel="icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-144x144.png">
-    <link type="image/png" sizes="192x192" rel="icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-192x192.png">
-    <link type="image/png" sizes="512x512" rel="icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-512x512.png">
-    <link rel="manifest" href="https://testit.software/themes/ino-testit/assets/images/favicon/manifest.json">
 
-    <!-- Иконки для iOS (Apple) -->
-    <link sizes="57x57" rel="apple-touch-icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-57x57.png">
-    <link sizes="60x60" rel="apple-touch-icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-60x60.png">
-    <link sizes="72x72" rel="apple-touch-icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-72x72.png">
-    <link sizes="76x76" rel="apple-touch-icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-76x76.png">
-    <link sizes="114x114" rel="apple-touch-icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-114x114.png">
-    <link sizes="120x120" rel="apple-touch-icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-120x120.png">
-    <link sizes="144x144" rel="apple-touch-icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-144x144.png">
-    <link sizes="152x152" rel="apple-touch-icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-152x152.png">
-    <link sizes="180x180" rel="apple-touch-icon" href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-180x180.png">
+   <meta name="twitter:description"
+      content="Хороший баг-репорт позволяет: понять, в чем проблема, и какова ее важность.">
+   <meta name="twitter:title" content="Как правильно оформить баг-репорт">
+   <meta name="twitter:image"
+      content="https://testit.software/storage/app/media/Articles%20IMG/-%D1%86%D0%B8%D0%BA%D0%BB-%D0%B1%D0%B0%D0%B3%D0%B0.jpg">
 
-    <link href="https://testit.software/combine/0fcdacdc197843d35b2a71547b3b75c6-1665668768" rel="stylesheet">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="generator" content="OctoberCMS">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Space+Mono&amp;display=swap" rel="stylesheet">
 
-    </head>
+   <!-- Дополнительные иконки для десктопных браузеров -->
+   <link type="image/png" sizes="16x16" rel="icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/favicon-16x16.png">
+   <link type="image/png" sizes="32x32" rel="icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/favicon-32x32.png">
+   <link type="image/png" sizes="96x96" rel="icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/favicon-96x96.png">
+   <link type="image/png" sizes="120x120" rel="icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/favicon-120x120.png">
 
-</a>                    <!--END .ctrl-button-->
-                </div>
-            </div>
-            <button class="button-burger js-button-burger header__burger">
-                <span class="button-burger__item"></span>
-            </button><!-- END .button-burger-->
-        </div>
-    </div>
-    <!--END .box-->
+   <!-- Иконки для Android -->
+   <link type="image/png" sizes="72x72" rel="icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-72x72.png">
+   <link type="image/png" sizes="96x96" rel="icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-96x96.png">
+   <link type="image/png" sizes="144x144" rel="icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-144x144.png">
+   <link type="image/png" sizes="192x192" rel="icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-192x192.png">
+   <link type="image/png" sizes="512x512" rel="icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/android-icon-512x512.png">
+   <link rel="manifest" href="https://testit.software/themes/ino-testit/assets/images/favicon/manifest.json">
+
+   <!-- Иконки для iOS (Apple) -->
+   <link sizes="57x57" rel="apple-touch-icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-57x57.png">
+   <link sizes="60x60" rel="apple-touch-icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-60x60.png">
+   <link sizes="72x72" rel="apple-touch-icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-72x72.png">
+   <link sizes="76x76" rel="apple-touch-icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-76x76.png">
+   <link sizes="114x114" rel="apple-touch-icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-114x114.png">
+   <link sizes="120x120" rel="apple-touch-icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-120x120.png">
+   <link sizes="144x144" rel="apple-touch-icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-144x144.png">
+   <link sizes="152x152" rel="apple-touch-icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-152x152.png">
+   <link sizes="180x180" rel="apple-touch-icon"
+      href="https://testit.software/themes/ino-testit/assets/images/favicon/apple-touch-icon-180x180.png">
+
+   <link href="https://testit.software/combine/0fcdacdc197843d35b2a71547b3b75c6-1665668768" rel="stylesheet">
+
+</head>
+
+</a>
+<!--END .ctrl-button-->
+</div>
+</div>
+<button class="button-burger js-button-burger header__burger">
+   <span class="button-burger__item"></span>
+</button><!-- END .button-burger-->
+</div>
+</div>
+<!--END .box-->
 </header>
 <main class="main">
 
-    
-<article class="article">
-    <div class="box">
-        <div class="article__container">
+
+   <article class="article">
+      <div class="box">
+         <div class="article__container">
             <header class="article__header">
-                <div class="article__category">Статьи</div>
-                <h1 class="article__title">Как правильно оформить баг-репорт</h1>
-                <time class="article__date" datetime="2021-10-13">13.10.2021</time>
-                <aside class="article__aside">
-                                            <div class="article-tags article__aside-item article__aside-item--tags">
-                            <div class="article-tags__grid">
-                                                            <a class="article-tags__tag" href="/blog?tag=qa">qa</a>
-                                                            <a class="article-tags__tag" href="/blog?tag=poleznye-stati">полезные статьи</a>
-                                                            <a class="article-tags__tag" href="/blog?tag=testirovanie">тестирование</a>
-                                                        </div>
-                        </div>
-                    
-                    <div class="interesting article__aside-item article__aside-item--interesting">
-    <h2 class="interesting__title">Больше интересного на эту тему</h2>
-    <div class="interesting__group">
-            </div>
-    <div class="interesting__actions">
-        <a class="ctrl-button ctrl-button--color-light-blue interesting__button" href="/blog">
-            <span class="ctrl-button__container">
-                <span class="ctrl-button__text">Все статьи</span>
-                <svg class="icon ctrl-button__icon" width="24" height="24">
-                    <use xlink:href="https://testit.software/themes/ino-testit/assets/images/svg-sprite.svg#arrow-right"></use>
-                </svg>
-                <!--END .icon-->
-            </span>
-        </a>
-        <!--END .ctrl-button-->
-    </div>
-</div>
-<!--END .interesting-->
-                </aside>
+               <div class="article__category">Статьи</div>
+               <h1 class="article__title">Как правильно оформить баг-репорт</h1>
+               <time class="article__date" datetime="2021-10-13">13.10.2021</time>
+               <aside class="article__aside">
+                  <div class="article-tags article__aside-item article__aside-item--tags">
+                     <div class="article-tags__grid">
+                        <a class="article-tags__tag" href="/blog?tag=qa">qa</a>
+                        <a class="article-tags__tag" href="/blog?tag=poleznye-stati">полезные статьи</a>
+                        <a class="article-tags__tag" href="/blog?tag=testirovanie">тестирование</a>
+                     </div>
+                  </div>
+
+                  <div class="interesting article__aside-item article__aside-item--interesting">
+                     <h2 class="interesting__title">Больше интересного на эту тему</h2>
+                     <div class="interesting__group">
+                     </div>
+                     <div class="interesting__actions">
+                        <a class="ctrl-button ctrl-button--color-light-blue interesting__button" href="/blog">
+                           <span class="ctrl-button__container">
+                              <span class="ctrl-button__text">Все статьи</span>
+                              <svg class="icon ctrl-button__icon" width="24" height="24">
+                                 <use
+                                    xlink:href="https://testit.software/themes/ino-testit/assets/images/svg-sprite.svg#arrow-right">
+                                 </use>
+                              </svg>
+                              <!--END .icon-->
+                           </span>
+                        </a>
+                        <!--END .ctrl-button-->
+                     </div>
+                  </div>
+                  <!--END .interesting-->
+               </aside>
             </header>
             <div class="wysiwyg-result article__body blog-post reset-list-style">
 
-                <p>При тестировании возникает необходимость документирования найденных дефектов. Это позволяет исправить их в кратчайшие сроки.</p>
+               <p>При тестировании возникает необходимость документирования найденных дефектов. Это позволяет исправить
+                  их в кратчайшие сроки.</p>
 
-<p>Если кратко, то хороший баг-репорт позволяет:</p>
+               <p>Если кратко, то хороший баг-репорт позволяет:</p>
 
-<ul>
-	<li>воспроизвести проблему;</li>
-	<li>понять, в чем проблема, и какова ее важность.</li>
-</ul>
-<img src="https://beqa.pro/blog/wp-content/uploads/%D0%96%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D1%86%D0%B8%D0%BA%D0%BB-%D0%B1%D0%B0%D0%B3%D0%B0.jpg" class="zooming-image" data-original="https://beqa.pro/blog/wp-content/uploads/%D0%96%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D1%86%D0%B8%D0%BA%D0%BB-%D0%B1%D0%B0%D0%B3%D0%B0.jpg" alt="">
+               <ul>
+                  <li>воспроизвести проблему;</li>
+                  <li>понять, в чем проблема, и какова ее важность.</li>
+               </ul>
+               <img
+                  src="https://beqa.pro/blog/wp-content/uploads/%D0%96%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D1%86%D0%B8%D0%BA%D0%BB-%D0%B1%D0%B0%D0%B3%D0%B0.jpg"
+                  class="zooming-image"
+                  data-original="https://beqa.pro/blog/wp-content/uploads/%D0%96%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D1%86%D0%B8%D0%BA%D0%BB-%D0%B1%D0%B0%D0%B3%D0%B0.jpg"
+                  alt="">
 
-<h3><strong>Что такое баг, типы багов</strong></h3>
+               <h3><strong>Что такое баг, типы багов</strong></h3>
 
-<p>По версии международной комиссии по сертификации тестирования программного обеспечения (ISTQB), баг(дефект) - изъян в компоненте или системе, который может привести компонент или систему к невозможности выполнить требуемую функцию. Например, неверный оператор или определение данных может привести к отказам компонента или системы.</p>
+               <p>По версии международной комиссии по сертификации тестирования программного обеспечения (ISTQB),
+                  баг(дефект) - изъян в компоненте или системе, который может привести компонент или систему к
+                  невозможности выполнить требуемую функцию. Например, неверный оператор или определение данных может
+                  привести к отказам компонента или системы.</p>
+
+               <h3><strong>Критичность и приоритет бага. Атрибуты баг-репорта</strong></h3>
+
+               <p>Необходимо рассказать о приоритете и критичности бага. Важно понимать разницу между ними. Примеры
+                  приведу из личного опыта. Объектом тестирования в моей работе является ПО приёмников цифрового
+                  телевидения. Главной задачей ПО приёмника является расшифровка контента, передаваемого в зашифрованном
+                  виде. Для успешной расшифровки абонент должен приобрести у оператора подписку на соответствующий пакет
+                  телеканалов.</p>
+
+               <p><strong>Критичность бага</strong> – это &nbsp;атрибут, который характеризует влияние бага на общую
+                  функциональность разрабатываемого ПО.</p>
+
+               <p>По критичности баги делят на:</p>
+
+               <p><strong>S1. Блокирующий (Blocker)</strong>. Всё тестируемое ПО не может работать без устранения бага.
+                  Например, приёмник начинает перезагружаться сразу после включения, мы не сможем больше ничего
+                  протестировать из-за этого бага.</p>
+
+               <p><strong>S2. Критический (Critical).</strong> Большая часть ПО не может корректно работать. Например,
+                  приёмник не может открывать закодированные каналы. До устранения этого дефекта можно протестировать
+                  UI, а также функционал, не связанный с расшифровыванием каналов.</p>
+
+               <p><strong>S3. Значительный (Major).</strong> Блокирует работу одной из основных логических цепочек ПО.
+                  Например, неправильное сообщение об ошибке при отсутствии подписки на пакет оператора.</p>
+
+               <p><strong>S4. Незначительный (Minor).</strong> Не нарушает основные логические цепочки приложения, с ним
+                  можно продолжать работать почти без потери качества. Здесь можно привести неточный перевод с русского
+                  на английский в меню приёмника.</p>
+
+               <p><strong>S5. Тривиальный (Trivial).</strong> Эта степень присваивается, когда баг вообще не влияет на
+                  общее качество работы ПО. Например, незначительное пересечение элементов в меню.</p>
 
-<h3><strong>Критичность и приоритет бага. Атрибуты баг-репорта</strong></h3>
+               <p>Приоритет бага — это то, в каком порядке нужно решать проблемы. Существует три степени приоритетности:
+               </p>
 
-<p>Необходимо рассказать о приоритете и критичности бага. Важно понимать разницу между ними. Примеры приведу из личного опыта. Объектом тестирования в моей работе является ПО приёмников цифрового телевидения. Главной задачей ПО приёмника является расшифровка контента, передаваемого в зашифрованном виде. Для успешной расшифровки абонент должен приобрести у оператора подписку на соответствующий пакет телеканалов.</p>
+               <p><strong>P1. Высокий приоритет (High).</strong> Нужно исправить немедленно, потому что баг является
+                  крайне важным для всего релиза. Например, старое сообщение об отсутствии подписки на пакет, хотя
+                  обновление текстов являлось целью этого релиза.</p>
 
-<p><strong>Критичность бага</strong> – это &nbsp;атрибут, который характеризует влияние бага на общую функциональность разрабатываемого ПО.</p>
+               <p><strong>P2. Средний приоритет (Medium).</strong> Точно нужно будет исправить, баг достаточно важен, но
+                  не требует немедленного решения. Например, некорректный перевод в меню приёмника.</p>
 
-<p>По критичности баги делят на:</p>
+               <p><strong>P3. Низкий приоритет (Low).</strong> Нужно будет исправить, но баг не очень важный и не
+                  требует немедленного решения. Например, это могут быть баги в функционале, который уже не используется
+                  оператором, но ещё не был удалён из кода.</p>
 
-<p><strong>S1. Блокирующий (Blocker)</strong>. Всё тестируемое ПО не может работать без устранения бага. Например, приёмник начинает перезагружаться сразу после включения, мы не сможем больше ничего протестировать из-за этого бага.</p>
+               <p>
+                  <br>
+               </p>
 
-<p><strong>S2. Критический (Critical).</strong> Большая часть ПО не может корректно работать. Например, приёмник не может открывать закодированные каналы. До устранения этого дефекта можно протестировать UI, а также функционал, не связанный с расшифровыванием каналов.</p>
+               <p>
+                  <!--[if !vml]--><img src="https://testit.software/storage/temp/public/451/338/29b/1__247.png"
+                     style="width: 476px;" class="fr-fic fr-dib fr-fil" data-result="success"
+                     srcset="https://testit.software/storage/temp/public/451/338/29b/1__247.png 247w"
+                     sizes="(max-width: 247px) 100vw, 247px">
+               </p>
 
-<p><strong>S3. Значительный (Major).</strong> Блокирует работу одной из основных логических цепочек ПО. Например, неправильное сообщение об ошибке при отсутствии подписки на пакет оператора.</p>
+               <p>
+                  <br>
+               </p>
 
-<p><strong>S4. Незначительный (Minor).</strong> Не нарушает основные логические цепочки приложения, с ним можно продолжать работать почти без потери качества. Здесь можно привести неточный перевод с русского на английский в меню приёмника.</p>
+               <h3><strong>Что такое баг репорт, его типичная структура</strong></h3>
 
-<p><strong>S5. Тривиальный (Trivial).</strong> Эта степень присваивается, когда баг вообще не влияет на общее качество работы ПО. Например, незначительное пересечение элементов в меню.</p>
+               <p>Глоссарий ISTQB говорит, что баг репорт - это документ, содержащий отчет о любом недостатке в
+                  компоненте или системе, который может привести компонент или систему к невозможности выполнить
+                  требуемую функцию.</p>
 
-<p>Приоритет бага — это то, в каком порядке нужно решать проблемы. Существует три степени приоритетности:</p>
+               <p>Но можно сказать и проще: баг репорт (bug report) – это технический документ, который содержит в себе
+                  полное описание бага, включающее информацию как о самом баге (краткое описание, критичность, приоритет
+                  и т.д.), так и об условиях возникновения данного бага.</p>
 
-<p><strong>P1. Высокий приоритет (High).</strong> Нужно исправить немедленно, потому что баг является крайне важным для всего релиза. Например, старое сообщение об отсутствии подписки на пакет, хотя обновление текстов являлось целью этого релиза.</p>
+               <p>Состав баг репорта приведен в таблице:</p>
 
-<p><strong>P2. Средний приоритет (Medium).</strong> Точно нужно будет исправить, баг достаточно важен, но не требует немедленного решения. Например, некорректный перевод в меню приёмника.</p>
+               <div class="wysiwyg-table">
+                  <table border="1" cellpadding="0" cellspacing="0" width="602">
+                     <tbody>
+                        <tr>
+                           <td valign="top" width="170">
 
-<p><strong>P3. Низкий приоритет (Low).</strong> Нужно будет исправить, но баг не очень важный и не требует немедленного решения. Например, это могут быть баги в функционале, который уже не используется оператором, но ещё не был удалён из кода.</p>
-
-<p>
-	<br>
-</p>
-
-<p>
-	<!--[if !vml]--><img src="https://testit.software/storage/temp/public/451/338/29b/1__247.png" style="width: 476px;" class="fr-fic fr-dib fr-fil" data-result="success" srcset="https://testit.software/storage/temp/public/451/338/29b/1__247.png 247w" sizes="(max-width: 247px) 100vw, 247px"></p>
-
-<p>
-	<br>
-</p>
-
-<h3><strong>Что такое баг репорт, его типичная структура</strong></h3>
-
-<p>Глоссарий ISTQB говорит, что баг репорт - это документ, содержащий отчет о любом недостатке в компоненте или системе, который может привести компонент или систему к невозможности выполнить требуемую функцию.</p>
-
-<p>Но можно сказать и проще: баг репорт (bug report) – это технический документ, который содержит в себе полное описание бага, включающее информацию как о самом баге (краткое описание, критичность, приоритет и т.д.), так и об условиях возникновения данного бага.</p>
-
-<p>Состав баг репорта приведен в таблице:</p>
-
-<div class="wysiwyg-table"><table border="1" cellpadding="0" cellspacing="0" width="602">
-	<tbody>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Заголовок (Summary)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Короткое описание проблемы, явно указывающее на причину и тип ошибочной ситуации.</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Проект (Project)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Название тестируемого проекта</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Компонент приложения (Component)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Название части или функции тестируемого продукта</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Номер версии (Version)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Версия, на которой была найдена ошибка</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Критичность</p>
-
-				<p>(Severity)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Наиболее распространена пятиуровневая система критичности:</p>
-
-				<p>S1 Блокирующий (Blocker)</p>
-
-				<p>S2 Критический (Critical)</p>
-
-				<p>S3 Значительный (Major)</p>
-
-				<p>S4 Незначительный (Minor)</p>
-
-				<p>S5 Тривиальный (Trivial)</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Приоритет (Priority)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Приоритет дефекта:</p>
-
-				<p>P1 Высокий (High)</p>
-
-				<p>P2 Средний (Medium)</p>
-
-				<p>P3 Низкий (Low)</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Статус (Status)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Статус бага. Зависит от используемой процедуры и жизненного цикла бага. Например:</p>
-
-				<ul>
-					<li>Новый</li>
-					<li>Открыт</li>
-					<li>Закрыт</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Автор (Author)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Создатель баг репорта</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Назначен на (Assigned To)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Имя сотрудника, назначенного на решение проблемы</p>
-			</td>
-		</tr>
-		<tr>
-			<td rowspan="4" valign="top" width="170">
-
-				<p>Описание (Description)</p>
-
-				<p>
-					<br>
-				</p>
-
-				<p>
-					<br>
-				</p>
-
-				<p>
-					<br>
-				</p>
-
-				<p>
-					<br>
-				</p>
-
-				<p>
-					<br>
-				</p>
-
-				<p>
-					<br>
-				</p>
-
-				<p>
-					<br>
-				</p>
-
-				<p>
-					<br>
-				</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Информация об окружении, на котором был найден баг: операционная система, сервис пак, имя и версия браузера, версия ПО чипа, версия библиотеки &nbsp;и т.д.</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="432">
-
-				<p>Шаги, по которым можно легко воспроизвести ситуацию, приведшую к ошибке.</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="432">
-
-				<p>Полученный результат</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="432">
-
-				<p>Ожидаемый результат</p>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="170">
-
-				<p>Прикрепленный файл (Attachment)</p>
-			</td>
-			<td valign="top" width="432">
-
-				<p>Файл с логами, скриншот или любой другой документ, который может помочь прояснить причину ошибки или указать на способ решения проблемы</p>
-			</td>
-		</tr>
-	</tbody>
-</table></div>
-
-<p>
-	<br>
-</p>
-
-<h3><strong>Как правильно оформить баг-репорт</strong></h3>
-
-<ol>
-	<li>Для начала нужно убедиться, что найденный баг ещё не был оформлен. Следует провести поиск его в соответствующем проекте по всем подходящим ключевым словам и\или полям. Если баг уже есть, следует обновить его описание.</li>
-	<li>Если баг не найден – нажимаем на кнопку создания бага. Не стоит забывать важное правило: один дефект - один баг в трекере.</li>
-	<li>Далее нужно постараться кратко описать, что не работает - это и будет заголовок баг-репорта.</li>
-	<li>После этого перейти к подробному описанию бага: указать шаги к воспроизведению.</li>
-	<li>Указать ожидаемый результат. Можно добавить ссылку на спецификацию.</li>
-	<li>Указать полученный результат.</li>
-	<li>Указать версию ПО, также указать версию окружения.</li>
-	<li>Если необходимо, приложить соответствующие артефакты: логи, скриншоты, дампы и т.д.</li>
-</ol>
-
-<h3><strong>Ошибки при создании баг-репорта</strong></h3>
-
-<p>Здесь перечислим проблемы, которые чаще всего встречаются при написании баг репорта.</p>
-
-<p><strong>Заголовок не понятен.</strong> Есть риск, что ни разработчик, ни коллеги не обратят внимания на довольно критичную проблему.</p>
-
-<p><strong>Отсутствуют шаги для воспроизведения.</strong> Есть риск, что разработчик, не поняв как повторить проблему, вернёт баг со статусом «Не воспроизводится».</p>
-
-<p><strong>Неправильно назначен баг.</strong> Возможно, баг по ошибке был назначен не на того разработчика или вообще остался в статусе “не назначен”. Есть риск, что багу долгое время не будет уделено внимание.</p>
-
-<p><strong>Недостаточность предоставленных данных.</strong> Не всегда одна и та же проблема проявляется при всех вводимых значениях и под любым вошедшим в систему пользователем, поэтому настоятельно рекомендуется вносить все необходимые данные в баг-репорт. Иначе баг будет отклонён разработчиком, и придётся потратить время на его детальное описание.</p>
-
-<p><strong>Отсутствие ожидаемого или полученного результата.</strong> В случаях, если вы не указали, что же должно быть ожидаемым поведением системы, вы тратите время разработчика на поиск данной информации, тем самым замедляете исправления дефекта. Рекомендуется указать ссылку на пункт в требованиях, написанный тест кейс или же ваше личное мнение, если эта ситуация не была задокументирована.</p>
-
-<h2><strong>Жизненный цикл бага</strong></h2>
-
-<p>Итак, баг найден, репорт составлен, что дальше? Дальше ведётся работа над багом в соответствии с жизненным циклом, который может быть настроен в системе багтрекинга. На практике это зависит от процессов в компании.</p>
-
-<p>Если кратко, то после создания баг-репорта статус бага может выглядеть следующим образом:</p>
-
-<ul>
-	<li>Новый (New). Тестировщик нашел баг, дефект успешно занесен в «Bug-tracking» систему.</li>
-	<li>Открыт (Opened). После того, как тестировщик отправил ошибку, она либо автоматически, либо вручную назначается на человека, который должен её проанализировать. В зависимости от решения, баг может быть:</li>
-	<li>Отложен (Postponed). Исправление бага отложено, т.к. он не является критичным на данном этапе разработки или по другим причинам.</li>
-	<li>Отклонен (Rejected). По разным причинам дефект может и не считаться таковым, что вынуждает отклонить его. Не баг, а фича.</li>
-	<li>Дубликат (Duplicate). Если описанная ошибка уже ранее была внесена в «Bug-tracking» систему.</li>
-	<li>Назначен (Assigned). Если ошибка актуальна и должна быть исправлена в следующей сборке (build), происходит назначение на разработчика, который должен исправить ошибку.</li>
-	<li>Исправлено (Fixed). Ответственный за исправление бага разработчик заявляет, что устранил дефект.</li>
-	<li>Проверен (Verified). Тестировщик проверяет, действительно ли ответственный разработчик исправил дефект. Если бага больше нет, он получает данный статус.</li>
-	<li>Повторно открыт (Reopened). Если опасения тестировщика оправданы, и баг в новом билде не исправлен – он все так же потребует исправления, поэтому вновь открывается.</li>
-	<li>Закрытый (Closed). В результате определенного количества перепроверок баг все-таки окончательно устранен и больше не потребует внимания команды – он объявляется закрытым.</li>
-</ul>
-
-<p>Более наглядно жизненный цикл бага можно посмотреть на диаграмме:</p>
-
-<p><img src="https://testit.software/storage/temp/public/0d1/516/5c8/2__1396.png" style="width: 433px;" class="fr-fic fr-dib fr-fil" data-result="success" srcset="https://testit.software/storage/temp/public/0d1/516/5c8/2__1396.png 1396w, https://testit.software/storage/temp/public/0d1/516/5c8/2__400.png 400w, https://testit.software/storage/temp/public/0d1/516/5c8/2__768.png 768w, https://testit.software/storage/temp/public/0d1/516/5c8/2__1024.png 1024w" sizes="(max-width: 1396px) 100vw, 1396px"></p>
-
-<p>
-	<!--[if !vml]-->
-	<br>
-</p>
-
-<p>При использовании системы тест менеджмента TestIT существует возможность интеграции с системами баг-трекинга. В нашей компании это JIRA. Достаточно нажать “save and create bug” и мы получаем почти готовый баг репорт в JIRA.</p>
-<img src="https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__1920.png" class="zooming-image" data-original="https://testit.software/storage/app/media/uploaded-files/Frame%2020.png" alt="" srcset="https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__1920.png 1920w, https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__400.png 400w, https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__768.png 768w, https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__1024.png 1024w" sizes="(max-width: 1920px) 100vw, 1920px">
-
-<p>
-	<!--[if !vml]-->Нужно только добавить несколько полей связанных с текущим проектом.</p>
-<img src="https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__1920.png" class="zooming-image" data-original="https://testit.software/storage/app/media/uploaded-files/frame-20-1.png" alt="" srcset="https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__1920.png 1920w, https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__400.png 400w, https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__768.png 768w, https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__1024.png 1024w" sizes="(max-width: 1920px) 100vw, 1920px">
-
-<p>
-	<!--[if !vml]-->В разделе Description уже есть разделы steps, actual result and expected result, что особенно актуально для начинающих тестировщиков и позволит им не пропустить важные разделы в баг репорте.</p>
-
-<h3>Вместо заключения</h3>
-
-<p>Если ваш баг-репорт составлен правильно, то шансы на быстрое исправление этих багов выше. Таким образом, исправление ошибки зависит от того, насколько качественно вы о ней сообщите. Смысл написания баг-репорта состоит в том, чтобы устранять проблемы. Составление правильных баг-репортов - не что иное, как навык, и его необходимо сформировать.</p>
-
-<p>Если тестировщик не сообщает об ошибке правильно, программист, скорее всего, отклонит эту ошибку, заявив, что она не воспроизводится.</p>
-
-<p>Поэтому, чем лучше тестировщики будут писать баг-репорты, тем дешевле обойдётся компании исправление этих дефектов.</p>
+                              <p>Заголовок (Summary)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Короткое описание проблемы, явно указывающее на причину и тип ошибочной ситуации.</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="170">
+
+                              <p>Проект (Project)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Название тестируемого проекта</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="170">
+
+                              <p>Компонент приложения (Component)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Название части или функции тестируемого продукта</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="170">
+
+                              <p>Номер версии (Version)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Версия, на которой была найдена ошибка</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="170">
+
+                              <p>Критичность</p>
+
+                              <p>(Severity)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Наиболее распространена пятиуровневая система критичности:</p>
+
+                              <p>S1 Блокирующий (Blocker)</p>
+
+                              <p>S2 Критический (Critical)</p>
+
+                              <p>S3 Значительный (Major)</p>
+
+                              <p>S4 Незначительный (Minor)</p>
+
+                              <p>S5 Тривиальный (Trivial)</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="170">
+
+                              <p>Приоритет (Priority)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Приоритет дефекта:</p>
+
+                              <p>P1 Высокий (High)</p>
+
+                              <p>P2 Средний (Medium)</p>
+
+                              <p>P3 Низкий (Low)</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="170">
+
+                              <p>Статус (Status)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Статус бага. Зависит от используемой процедуры и жизненного цикла бага. Например:</p>
+
+                              <ul>
+                                 <li>Новый</li>
+                                 <li>Открыт</li>
+                                 <li>Закрыт</li>
+                              </ul>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="170">
+
+                              <p>Автор (Author)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Создатель баг репорта</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="170">
+
+                              <p>Назначен на (Assigned To)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Имя сотрудника, назначенного на решение проблемы</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td rowspan="4" valign="top" width="170">
+
+                              <p>Описание (Description)</p>
+
+                              <p>
+                                 <br>
+                              </p>
+
+                              <p>
+                                 <br>
+                              </p>
+
+                              <p>
+                                 <br>
+                              </p>
+
+                              <p>
+                                 <br>
+                              </p>
+
+                              <p>
+                                 <br>
+                              </p>
+
+                              <p>
+                                 <br>
+                              </p>
+
+                              <p>
+                                 <br>
+                              </p>
+
+                              <p>
+                                 <br>
+                              </p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Информация об окружении, на котором был найден баг: операционная система, сервис пак,
+                                 имя и версия браузера, версия ПО чипа, версия библиотеки &nbsp;и т.д.</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="432">
+
+                              <p>Шаги, по которым можно легко воспроизвести ситуацию, приведшую к ошибке.</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="432">
+
+                              <p>Полученный результат</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="432">
+
+                              <p>Ожидаемый результат</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td valign="top" width="170">
+
+                              <p>Прикрепленный файл (Attachment)</p>
+                           </td>
+                           <td valign="top" width="432">
+
+                              <p>Файл с логами, скриншот или любой другой документ, который может помочь прояснить
+                                 причину ошибки или указать на способ решения проблемы</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+
+               <p>
+                  <br>
+               </p>
+
+               <h3><strong>Как правильно оформить баг-репорт</strong></h3>
+
+               <ol>
+                  <li>Для начала нужно убедиться, что найденный баг ещё не был оформлен. Следует провести поиск его в
+                     соответствующем проекте по всем подходящим ключевым словам и\или полям. Если баг уже есть, следует
+                     обновить его описание.</li>
+                  <li>Если баг не найден – нажимаем на кнопку создания бага. Не стоит забывать важное правило: один
+                     дефект - один баг в трекере.</li>
+                  <li>Далее нужно постараться кратко описать, что не работает - это и будет заголовок баг-репорта.</li>
+                  <li>После этого перейти к подробному описанию бага: указать шаги к воспроизведению.</li>
+                  <li>Указать ожидаемый результат. Можно добавить ссылку на спецификацию.</li>
+                  <li>Указать полученный результат.</li>
+                  <li>Указать версию ПО, также указать версию окружения.</li>
+                  <li>Если необходимо, приложить соответствующие артефакты: логи, скриншоты, дампы и т.д.</li>
+               </ol>
+
+               <h3><strong>Ошибки при создании баг-репорта</strong></h3>
+
+               <p>Здесь перечислим проблемы, которые чаще всего встречаются при написании баг репорта.</p>
+
+               <p><strong>Заголовок не понятен.</strong> Есть риск, что ни разработчик, ни коллеги не обратят внимания
+                  на довольно критичную проблему.</p>
+
+               <p><strong>Отсутствуют шаги для воспроизведения.</strong> Есть риск, что разработчик, не поняв как
+                  повторить проблему, вернёт баг со статусом «Не воспроизводится».</p>
+
+               <p><strong>Неправильно назначен баг.</strong> Возможно, баг по ошибке был назначен не на того
+                  разработчика или вообще остался в статусе “не назначен”. Есть риск, что багу долгое время не будет
+                  уделено внимание.</p>
+
+               <p><strong>Недостаточность предоставленных данных.</strong> Не всегда одна и та же проблема проявляется
+                  при всех вводимых значениях и под любым вошедшим в систему пользователем, поэтому настоятельно
+                  рекомендуется вносить все необходимые данные в баг-репорт. Иначе баг будет отклонён разработчиком, и
+                  придётся потратить время на его детальное описание.</p>
+
+               <p><strong>Отсутствие ожидаемого или полученного результата.</strong> В случаях, если вы не указали, что
+                  же должно быть ожидаемым поведением системы, вы тратите время разработчика на поиск данной информации,
+                  тем самым замедляете исправления дефекта. Рекомендуется указать ссылку на пункт в требованиях,
+                  написанный тест кейс или же ваше личное мнение, если эта ситуация не была задокументирована.</p>
+
+               <h2><strong>Жизненный цикл бага</strong></h2>
+
+               <p>Итак, баг найден, репорт составлен, что дальше? Дальше ведётся работа над багом в соответствии с
+                  жизненным циклом, который может быть настроен в системе багтрекинга. На практике это зависит от
+                  процессов в компании.</p>
+
+               <p>Если кратко, то после создания баг-репорта статус бага может выглядеть следующим образом:</p>
+
+               <ul>
+                  <li>Новый (New). Тестировщик нашел баг, дефект успешно занесен в «Bug-tracking» систему.</li>
+                  <li>Открыт (Opened). После того, как тестировщик отправил ошибку, она либо автоматически, либо вручную
+                     назначается на человека, который должен её проанализировать. В зависимости от решения, баг может
+                     быть:</li>
+                  <li>Отложен (Postponed). Исправление бага отложено, т.к. он не является критичным на данном этапе
+                     разработки или по другим причинам.</li>
+                  <li>Отклонен (Rejected). По разным причинам дефект может и не считаться таковым, что вынуждает
+                     отклонить его. Не баг, а фича.</li>
+                  <li>Дубликат (Duplicate). Если описанная ошибка уже ранее была внесена в «Bug-tracking» систему.</li>
+                  <li>Назначен (Assigned). Если ошибка актуальна и должна быть исправлена в следующей сборке (build),
+                     происходит назначение на разработчика, который должен исправить ошибку.</li>
+                  <li>Исправлено (Fixed). Ответственный за исправление бага разработчик заявляет, что устранил дефект.
+                  </li>
+                  <li>Проверен (Verified). Тестировщик проверяет, действительно ли ответственный разработчик исправил
+                     дефект. Если бага больше нет, он получает данный статус.</li>
+                  <li>Повторно открыт (Reopened). Если опасения тестировщика оправданы, и баг в новом билде не исправлен
+                     – он все так же потребует исправления, поэтому вновь открывается.</li>
+                  <li>Закрытый (Closed). В результате определенного количества перепроверок баг все-таки окончательно
+                     устранен и больше не потребует внимания команды – он объявляется закрытым.</li>
+               </ul>
+
+               <p>Более наглядно жизненный цикл бага можно посмотреть на диаграмме:</p>
+
+               <p><img src="https://testit.software/storage/temp/public/0d1/516/5c8/2__1396.png" style="width: 433px;"
+                     class="fr-fic fr-dib fr-fil" data-result="success"
+                     srcset="https://testit.software/storage/temp/public/0d1/516/5c8/2__1396.png 1396w, https://testit.software/storage/temp/public/0d1/516/5c8/2__400.png 400w, https://testit.software/storage/temp/public/0d1/516/5c8/2__768.png 768w, https://testit.software/storage/temp/public/0d1/516/5c8/2__1024.png 1024w"
+                     sizes="(max-width: 1396px) 100vw, 1396px"></p>
+
+               <p>
+                  <!--[if !vml]-->
+                  <br>
+               </p>
+
+               <p>При использовании системы тест менеджмента TestIT существует возможность интеграции с системами
+                  баг-трекинга. В нашей компании это JIRA. Достаточно нажать “save and create bug” и мы получаем почти
+                  готовый баг репорт в JIRA.</p>
+               <img src="https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__1920.png"
+                  class="zooming-image"
+                  data-original="https://testit.software/storage/app/media/uploaded-files/Frame%2020.png" alt=""
+                  srcset="https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__1920.png 1920w, https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__400.png 400w, https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__768.png 768w, https://testit.software/storage/temp/public/d5f/bf5/85d/Frame%2020__1024.png 1024w"
+                  sizes="(max-width: 1920px) 100vw, 1920px">
+
+               <p>
+                  <!--[if !vml]-->Нужно только добавить несколько полей связанных с текущим проектом.
+               </p>
+               <img src="https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__1920.png"
+                  class="zooming-image"
+                  data-original="https://testit.software/storage/app/media/uploaded-files/frame-20-1.png" alt=""
+                  srcset="https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__1920.png 1920w, https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__400.png 400w, https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__768.png 768w, https://testit.software/storage/temp/public/62a/5d0/7f5/frame-20-1__1024.png 1024w"
+                  sizes="(max-width: 1920px) 100vw, 1920px">
+
+               <p>
+                  <!--[if !vml]-->В разделе Description уже есть разделы steps, actual result and expected result, что
+                  особенно актуально для начинающих тестировщиков и позволит им не пропустить важные разделы в баг
+                  репорте.
+               </p>
+
+               <h3>Вместо заключения</h3>
+
+               <p>Если ваш баг-репорт составлен правильно, то шансы на быстрое исправление этих багов выше. Таким
+                  образом, исправление ошибки зависит от того, насколько качественно вы о ней сообщите. Смысл написания
+                  баг-репорта состоит в том, чтобы устранять проблемы. Составление правильных баг-репортов - не что
+                  иное, как навык, и его необходимо сформировать.</p>
+
+               <p>Если тестировщик не сообщает об ошибке правильно, программист, скорее всего, отклонит эту ошибку,
+                  заявив, что она не воспроизводится.</p>
+
+               <p>Поэтому, чем лучше тестировщики будут писать баг-репорты, тем дешевле обойдётся компании исправление
+                  этих дефектов.</p>
 
             </div>
             <!--END .wysiwyg-result-->
-            
